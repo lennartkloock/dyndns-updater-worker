@@ -24,7 +24,7 @@ export default {
 			return new Response("Invalid credentials", { status: 401 });
 		}
 
-		const res = await fetch(`https://api.porkbun.com/api/json/v3/dns/edit/${env.PORKBUN_DOMAIN}/${env.PORKBUN_A_RECORD_ID}`, {
+		const res = await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/A/${env.PORKBUN_A_RECORD}`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
@@ -32,7 +32,6 @@ export default {
 			body: JSON.stringify({
 				secretapikey: env.PORKBUN_SECRET_API_KEY,
 				apikey: env.PORKBUN_API_KEY,
-				type: "A",
 				content: params.ipv4,
 			}),
 		});
@@ -43,7 +42,7 @@ export default {
 		}
 
 		if (params.ipv6) {
-			await fetch(`https://api.porkbun.com/api/json/v3/dns/edit/${env.PORKBUN_DOMAIN}/${env.PORKBUN_AAAA_RECORD_ID}`, {
+			await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/AAAA/${env.PORKBUN_AAAA_RECORD}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -51,7 +50,6 @@ export default {
 				body: JSON.stringify({
 					secretapikey: env.PORKBUN_SECRET_API_KEY,
 					apikey: env.PORKBUN_API_KEY,
-					type: "AAAA",
 					content: params.ipv6,
 				}),
 			});
@@ -62,7 +60,7 @@ export default {
 			}
 		}
 
-		return new Response();
+		return new Response("Successfully updated DNS records", { status: 200 });
 	},
 } satisfies ExportedHandler<Env>;
 

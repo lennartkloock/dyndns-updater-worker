@@ -23,9 +23,10 @@ enabled = true
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/workers/configuration/secrets/
 [vars]
+PORKBUN_API_KEY = "apikey"
 PORKBUN_DOMAIN = "example.com"
-PORKBUN_A_RECORD_ID = "1234"
-PORKBUN_AAAA_RECORD_ID = "1234"
+PORKBUN_A_RECORD = "home"
+PORKBUN_AAAA_RECORD = "home"
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/workers/wrangler/configuration/#workers-ai
