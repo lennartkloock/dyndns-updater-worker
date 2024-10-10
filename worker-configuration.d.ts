@@ -7,5 +7,5 @@ interface Env {
 	USER: string;
 	PASSWORD: string;
 	PORKBUN_API_KEY: string;
-	PORKBUND_SECRET_API_KEY: string;
+	PORKBUN_SECRET_API_KEY: string;
 }
