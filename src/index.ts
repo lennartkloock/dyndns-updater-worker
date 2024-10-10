@@ -30,7 +30,7 @@ export default {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				secretapikey: env.PORKBUND_SECRET_API_KEY,
+				secretapikey: env.PORKBUN_SECRET_API_KEY,
 				apikey: env.PORKBUN_API_KEY,
 				type: "A",
 				content: params.ipv4,
@@ -49,7 +49,7 @@ export default {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({
-					secretapikey: env.PORKBUND_SECRET_API_KEY,
+					secretapikey: env.PORKBUN_SECRET_API_KEY,
 					apikey: env.PORKBUN_API_KEY,
 					type: "AAAA",
 					content: params.ipv6,
