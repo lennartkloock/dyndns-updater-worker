@@ -42,7 +42,7 @@ export default {
 		}
 
 		if (params.ipv6) {
-			await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/AAAA/${env.PORKBUN_AAAA_RECORD}`, {
+			const res = await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/AAAA/${env.PORKBUN_AAAA_RECORD}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
