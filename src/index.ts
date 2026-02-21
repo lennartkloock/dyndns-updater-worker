@@ -84,7 +84,7 @@ interface PorkbunResponse {
 interface Params {
 	user: string;
 	password: string;
-	ipv4: string;
+	ipv4: string | null;
 	ipv6: string | null;
 }
 
@@ -94,7 +94,7 @@ function getParams(url: URL): Params | null {
 	const ipv4 = url.searchParams.get("ipv4");
 	const ipv6 = url.searchParams.get("ipv6");
 
-	if (!user || !password || !ipv4) {
+	if (!user || !password) {
 		return null;
 	}
 
