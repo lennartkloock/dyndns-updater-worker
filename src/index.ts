@@ -24,21 +24,23 @@ export default {
 			return new Response("Invalid credentials", { status: 401 });
 		}
 
-		const res = await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/A/${env.PORKBUN_A_RECORD}`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				secretapikey: env.PORKBUN_SECRET_API_KEY,
-				apikey: env.PORKBUN_API_KEY,
-				content: params.ipv4,
-			}),
-		});
+		if (params.ipv4) {
+			const res = await fetch(`https://api.porkbun.com/api/json/v3/dns/editByNameType/${env.PORKBUN_DOMAIN}/A/${env.PORKBUN_A_RECORD}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({
+					secretapikey: env.PORKBUN_SECRET_API_KEY,
+					apikey: env.PORKBUN_API_KEY,
+					content: params.ipv4,
+				}),
+			});
 
-		const error = await handlePorkbunResponse(res);
-		if (error) {
-			return error;
+			const error = await handlePorkbunResponse(res);
+			if (error) {
+				return error;
+			}
 		}
 
 		if (params.ipv6) {
